@@ -93,7 +93,8 @@ class Player(pygame.sprite.Sprite):
         if self.shoot_flag and now - self.last_shot >= self.bullet_delay:
             self.last_shot = now
             bullet = Player_Bullet(self.rect.centerx - 11, self.rect.top)
-            player_bullets.add(bullet)
+            if not self.damage_flag:
+                player_bullets.add(bullet)
             pygame.mixer.Sound.play(bullet_sound)
 
             # While being powered up woth item1, player can shoot 3 bullet3.
